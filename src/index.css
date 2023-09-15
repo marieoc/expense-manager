@@ -44,7 +44,7 @@ button {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #f9f9f9;
     padding: 20px;
-    height: 50vh;
+    height: 55vh;
 }
 
 .list {
@@ -127,13 +127,13 @@ label {
 
 .btn_wrapper {
     width: 100%;
+    margin: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .btn {
-    width: 100%;
     padding: 10px 40px;
     border-radius: 5px;
     background-color: #e9e9e9;
