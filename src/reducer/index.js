@@ -1,6 +1,12 @@
 
+export const TAG = {
+    PRICE: 'price',
+    CATEGORY: 'category',
+    ALL: 'all'
+}
+
 export const ERROR_TYPES = {
-    EMPTY_INPUT: 'empty_input',
+    EMPTY_INPUT: 'empty_error',
     INVALID_TYPE: 'invalid_type'
 }
 
@@ -9,6 +15,7 @@ export const initialState = {
     total: 0,
     expense: [],
     inputError: {
+        tag: '',
         msg: '',
         type: ''
     }
@@ -20,6 +27,7 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 inputError: {
+                    tag: action.payload.tag,
                     msg: action.payload.msg,
                     type: action.payload.type,
                 }
