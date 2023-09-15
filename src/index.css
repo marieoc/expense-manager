@@ -141,7 +141,12 @@ label {
     font-weight: 600;
     font-size: 1rem;
     border: none;
+    transition: transform 0.2s;
 }
+.btn:active {
+    transform: scale(0.95);
+}
+
 .input {
     margin-top: 1rem;
     width: 100%;
