@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
+import { useExpense } from '../context/useExpense';
 
-const Form = ({ state, dispatch }) => {
+const Form = () => {
   const [formValue, setFormValue] = useState({
     price: '',
     category: ''
   });
 
-   
+  const {dispatch} = useExpense()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,7 +34,7 @@ const Form = ({ state, dispatch }) => {
         <label>
           Catégorie : 
           <select
-            onChange={(e) => setFormValue( value => ({...formValue, category: e.target.value }))}
+            onChange={(e) => setFormValue( value => ({...value, category: e.target.value }))}
           >
             <option value={''}>-- Veuillez choisir une catégorie</option>
             <option value={'food'}>Alimentation</option>

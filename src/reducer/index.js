@@ -2,7 +2,6 @@
 export const initialState = {
     total: 0,
     expense: [],
-    lastAction: ''
 }
 
 
@@ -16,9 +15,12 @@ const reducer = (state, action) => {
 
         case 'add':
             return {
-
+                ...state,
+                expense: [
+                    ...state.expense,
+                    action.payload
+                ],
             }
-           
         case "delete":
            
         case 'total':

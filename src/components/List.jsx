@@ -1,33 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useExpense } from '../context/useExpense'
 
 const List = () => {
   const [total, setTotal] = useState(0)
-  const expenses = [
-    {
-      price: 50,
-      category: 'Vêtements'
-    },
-    {
-      price: 580,
-      category: 'Impôt'
-    },
-    {
-      price: 86,
-      category: 'Essences'
-    }
-  ]
+  const {state} = useExpense()
 
   return (
     <div className='container'>
       <ul className='list'>
         <li className='row' id='head-row'>
-          <span>Prix</span>
           <span>Catégorie</span>
+          <span>Prix</span>
         </li>
         <div style={{marginTop: '25px'}}>
-          {expenses.map((expense, index) => (<li key={index} className='row'>
-            <span>{expense.price}</span>
-            <span>{expense.category}</span>
+          {state.expense.map((el, index) => (<li key={index} className='row'>
+            <span>{el.category}</span>
+            <span>{el.price}</span>
           </li>))}
         </div>
         <li className='row'>
