@@ -83,8 +83,7 @@ const Form = () => {
     dispatch({ 
       type: "add", 
       payload: {
-        formValue,
-        id: 'id-' + Math.random().toString(36).substr(2) + Date.now().toString(36),
+        formValue
       }
     });
     dispatch({ type: "total" });

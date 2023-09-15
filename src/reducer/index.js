@@ -31,32 +31,32 @@ const reducer = (state, action) => {
         },
       };
 
-    case "add":
-      return {
-        ...state,
-        expense: [
-          ...state.expense,
-          {
-            price: parseInt(action.payload.formValue.price),
-            category: action.payload.formValue.category,
-            id: action.payload.id,
-          },
-        ],
-      };
-    case "delete":
-      return {
-        ...state,
-        expense: state.expense.filter((el) => el.id !== action.payload),
-      };
-
-    case "total":
-      return {
-        ...state,
-        total: state.expense.reduce((acc, num) => acc + num.price, 0),
-      };
-    default:
-      return state;
-  }
-};
-
-export default reducer;
+        case 'add':
+            console.log(action.payload)
+            return {
+                ...state,
+                expense: [
+                    ...state.expense,
+                    {
+                        price: parseInt(action.payload.formValue.price),
+                        category: action.payload.formValue.category,
+                        id: action.payload.id,
+                    }
+                ],
+            }
+            case "delete":
+                console.log(action.payload)
+                return {
+                    ...state,
+                    expense: state.expense.filter((el) => el.id !== action.payload)
+                }
+           
+        case 'total':
+          return {
+            ...state,
+            total: state.expense.reduce((acc, num) => acc + num.price, 0),
+          }
+        default:
+            return state;
+    }
+}
