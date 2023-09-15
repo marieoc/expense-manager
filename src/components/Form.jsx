@@ -105,7 +105,7 @@ const Form = () => {
               (state.inputError.tag === TAG.PRICE ||
                 state.inputError.tag === TAG.ALL)) ||
               state.inputError.type === ERROR_TYPES.INVALID_TYPE) && (
-              <span>{state.inputError.msg}</span>
+              <span className="error">{state.inputError.msg}</span>
             )}
           </label>
 
@@ -131,7 +131,7 @@ const Form = () => {
             {state.inputError.type === ERROR_TYPES.EMPTY_INPUT &&
               (state.inputError.tag === TAG.CATEGORY ||
                 state.inputError.tag === TAG.ALL) && (
-                <span>{state.inputError.msg}</span>
+                <span className="error">{state.inputError.msg}</span>
               )}
           </label>
         </div>

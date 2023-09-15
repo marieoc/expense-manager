@@ -157,3 +157,7 @@ label {
     font-size: 1rem;
     border: none;
 }
+
+.error {
+    color: rgb(194, 38, 38);
+}
