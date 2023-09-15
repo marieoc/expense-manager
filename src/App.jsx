@@ -1,11 +1,16 @@
 import { useState } from 'react'
+import Form from './components/Form';
+import List from './components/List';
+import Total from './components/Total';
 import './App.css'
 
 function App() {
 
   return (
     <>
-      Hello
+      <Form />
+      <List />
+      <Total />
     </>
   )
 }
