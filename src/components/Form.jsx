@@ -46,7 +46,7 @@ const Form = () => {
   };
 
   const handleErrorInvalidType = () => {
-    if(isNaN(formValue.price) && formValue.price) {
+    if(isNaN(formValue.price)) {
       dispatch({
         type: "error",
         payload: {
@@ -68,7 +68,7 @@ const Form = () => {
 
     if(checkIsEmpty === false){
       return
-    }else if(checkIsEmpty && checkIsInvalidType === false){
+    } else if(checkIsInvalidType === false){
       return
     }
 
