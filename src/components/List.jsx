@@ -8,15 +8,17 @@ const List = () => {
   return (
     <div className='container'>
       <ul className='list'>
-        <li className='row' id='head-row'>
-          <span>Catégorie</span>
-          <span>Prix</span>
-        </li>
-        <div style={{marginTop: '25px'}}>
-          {state.expense.map((el, index) => (<li key={index} className='row'>
-            <span>{el.category}</span>
-            <span>{el.price}</span>
-          </li>))}
+        <div className='wrapper-scroll'>
+          <li className='row' id='head-row'>
+            <span>Catégorie</span>
+            <span>Prix</span>
+          </li>
+          <div style={{marginTop: '25px'}}>
+            {state.expense.map((el, index) => (<li key={index} className='row'>
+              <span>{el.category}</span>
+              <span>{el.price}</span>
+            </li>))}
+          </div>
         </div>
         <li className='row'>
           <span>Total</span>

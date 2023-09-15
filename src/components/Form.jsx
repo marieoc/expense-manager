@@ -11,45 +11,48 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     dispatch({ type: 'add', payload: formValue })
   }
 
   return (
-    <div className='add_expense_form__wrapper'>
+    <div className='container' style={{position: 'relative'}}>
+      <h2 style={{textAlign: 'center'}}>Ajouter une dépense</h2>
       <form 
         className='add_expense_form'
         onSubmit={handleSubmit}
       >
-        <h2>Ajouter une dépense</h2>
-        <label>
-          Montant : 
-          <input
-            type={'text'}
-            className=''
-            onChange={(e) => setFormValue( value => ({...value, price: e.target.value }))}
-          />
-        </label>
+        <div className='wrapper-form'>
+          <label>
+            Montant : 
+            <input
+              type={'text'}
+              className='input'
+              onChange={(e) => setFormValue( value => ({...value, price: e.target.value }))}
+            />
+          </label>
 
-        <label>
-          Catégorie : 
-          <select
-            onChange={(e) => setFormValue( value => ({...value, category: e.target.value }))}
-          >
-            <option value={''}>-- Veuillez choisir une catégorie</option>
-            <option value={'food'}>Alimentation</option>
-            <option value={'accomodation'}>Logement</option>
-            <option value={'transport'}>Transport</option>
-            <option value={'health'}>Santé</option>
-            <option value={'education'}>Education</option>
-            <option value={'others'}>Autres</option>
-          </select>
-        </label>
+          <label>
+            Catégorie : 
+            <select
+              className='input'
+              onChange={(e) => setFormValue( value => ({...value, category: e.target.value }))}
+            >
+              <option value={''}>-- Veuillez choisir une catégorie</option>
+              <option value={'food'}>Alimentation</option>
+              <option value={'accomodation'}>Logement</option>
+              <option value={'transport'}>Transport</option>
+              <option value={'health'}>Santé</option>
+              <option value={'education'}>Education</option>
+              <option value={'others'}>Autres</option>
+            </select>
+          </label>
+        </div>
 
         <div className='btn_wrapper'>
           <input 
             type={'submit'}
             className='btn'
+            style={{position: 'absolute', bottom: '1rem', padding: '10px'}}
           />
         </div>
 
