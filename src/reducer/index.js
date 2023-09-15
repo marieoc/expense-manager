@@ -6,10 +6,18 @@ export const initialState = {
 }
 
 
-const calcReducer = (state, action) => {
+const reducer = (state, action) => {
     switch(action.type) {
+        case 'changeValue':
+            return {
+                ...state,
+                [action.payload.name]: action.payload.value
+            }
 
         case 'add':
+            return {
+
+            }
            
         case "delete":
            
@@ -20,4 +28,4 @@ const calcReducer = (state, action) => {
     }
 }
 
-export default calcReducer
+export default reducer

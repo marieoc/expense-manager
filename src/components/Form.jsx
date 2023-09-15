@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const Form = () => {
+const Form = ({ state, dispatch }) => {
+  const [formValue, setFormValue] = useState({
+    price: '',
+    category: ''
+  });
+
+   
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    dispatch({ type: 'add', payload: formValue })
   }
 
   return (
@@ -18,13 +26,15 @@ const Form = () => {
           <input
             type={'text'}
             className=''
-            onChange={() => {}}
+            onChange={(e) => setFormValue( value => ({...value, price: e.target.value }))}
           />
         </label>
 
         <label>
           Catégorie : 
-          <select>
+          <select
+            onChange={(e) => setFormValue( value => ({...formValue, category: e.target.value }))}
+          >
             <option value={''}>-- Veuillez choisir une catégorie</option>
             <option value={'food'}>Alimentation</option>
             <option value={'accomodation'}>Logement</option>
