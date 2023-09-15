@@ -13,12 +13,18 @@ html, * {
     scroll-behavior: smooth;
     font-family: 'Roboto', sans-serif;
 }
+html, body {
+    overflow-y: hidden;
+}
 
 body * {
     margin: 0;
     box-sizing: border-box;
+    
 }
-
+body {
+    background-image: linear-gradient(to bottom right, rgb(0, 207, 173), rgb(0, 107, 59));
+}
 ul,
 ol {
     padding: 0;
@@ -40,7 +46,7 @@ button {
     width: 40%;
     margin: 0 auto;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #f9f9f9;
     padding: 20px;
