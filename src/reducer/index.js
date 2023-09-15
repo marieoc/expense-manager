@@ -42,7 +42,7 @@ const reducer = (state, action) => {
                     {
                         price: parseInt(action.payload.formValue.price),
                         category: action.payload.formValue.category,
-                        id: action.payload.id,
+                        id: 'id-' + Math.random().toString(36).substring(2) + Date.now().toString(36),
                     }
                 ],
             }
