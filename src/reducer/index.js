@@ -38,10 +38,18 @@ const reducer = (state, action) => {
                 ...state,
                 expense: [
                     ...state.expense,
-                    action.payload
+                    {
+                        price: parseInt(action.payload.price),
+                        category: action.payload.category,
+                        id: action.payload.id,
+                    }
                 ],
             }
-        case "delete":
+            case "delete":
+                return {
+                    ...state,
+                    expense: state.expense.filter((el) => el.id !== action.payload)
+                }
            
         case 'total':
           return {

@@ -72,6 +72,7 @@ button {
     justify-content: space-between;
     border-bottom: 1px solid #ccc;
     padding: 10px 40px;
+    align-items: center;
 }
 .row > span::first-letter {
     text-transform: uppercase;
@@ -156,6 +157,16 @@ label {
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     font-size: 1rem;
     border: none;
+}
+.btn-trash {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #aeaeae;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    transition: transform 0.2s;
 }
 
 .error {

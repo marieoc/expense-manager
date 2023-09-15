@@ -6,6 +6,7 @@ const Form = () => {
   const [formValue, setFormValue] = useState({
     price: "",
     category: "",
+    id: ''
   });
 
   const { state, dispatch } = useExpense();
@@ -58,19 +59,24 @@ const Form = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // If inputs are empty
     const checkIsEmpty = handleErrorEmptyInput();
-    if(checkIsEmpty === false){
-      return
-    }
     const checkIsInvalidType = handleErrorInvalidType();
 
-    if(checkIsInvalidType === false){
+    if(checkIsEmpty === false){
+      return
+    }else if(checkIsEmpty && checkIsInvalidType === false){
       return
     }
+
+    await setFormValue(value => ({...value, 
+      ...value,
+     id: 'id-' + Math.random().toString(36) + Date.now().toString(36),
+    }))
+
     dispatch({
       type: "error",
       payload: {
@@ -79,8 +85,16 @@ const Form = () => {
         type: '',
       },
     });
-    dispatch({ type: "add", payload: formValue });
-    dispatch({ type: "total" });
+    await dispatch({ 
+      type: "add", 
+      payload: formValue
+    });
+    await dispatch({ type: "total" });
+    setFormValue((value) => ({...value,
+      price: '',
+      category: '',
+      id: ''
+    }))
     return
   };
 
@@ -94,10 +108,11 @@ const Form = () => {
             <input
               type={"text"}
               className="input"
-              onChange={(e) =>
+              value={formValue.price}
+              onInput={(e) =>
                 setFormValue((value) => ({
                   ...value,
-                  price: parseInt(e.target.value),
+                  price: e.target.value,
                 }))
               }
             />
@@ -113,7 +128,8 @@ const Form = () => {
             Catégorie :
             <select
               className="input"
-              onChange={(e) =>
+              value={formValue.category}
+              onInput={(e) =>
                 setFormValue((value) => ({
                   ...value,
                   category: e.target.value,
