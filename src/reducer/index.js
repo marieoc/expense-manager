@@ -34,18 +34,20 @@ const reducer = (state, action) => {
             }
 
         case 'add':
+            console.log(action.payload)
             return {
                 ...state,
                 expense: [
                     ...state.expense,
                     {
-                        price: parseInt(action.payload.price),
-                        category: action.payload.category,
+                        price: parseInt(action.payload.formValue.price),
+                        category: action.payload.formValue.category,
                         id: action.payload.id,
                     }
                 ],
             }
             case "delete":
+                console.log(action.payload)
                 return {
                     ...state,
                     expense: state.expense.filter((el) => el.id !== action.payload)

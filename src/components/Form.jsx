@@ -59,7 +59,7 @@ const Form = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     // If inputs are empty
@@ -72,11 +72,6 @@ const Form = () => {
       return
     }
 
-    await setFormValue(value => ({...value, 
-      ...value,
-     id: 'id-' + Math.random().toString(36) + Date.now().toString(36),
-    }))
-
     dispatch({
       type: "error",
       payload: {
@@ -85,11 +80,15 @@ const Form = () => {
         type: '',
       },
     });
-    await dispatch({ 
+    dispatch({ 
       type: "add", 
-      payload: formValue
+      payload: {
+        formValue,
+        id: 'id-' + Math.random().toString(36).substr(2) + Date.now().toString(36),
+      }
     });
-    await dispatch({ type: "total" });
+    dispatch({ type: "total" });
+
     setFormValue((value) => ({...value,
       price: '',
       category: '',
