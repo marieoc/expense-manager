@@ -1,16 +1,28 @@
 
-export const initialState = {
-    total: 0,
-    expense: [],
+export const ERROR_TYPES = {
+    EMPTY_INPUT: 'empty_input',
+    INVALID_TYPE: 'invalid_type'
 }
 
 
+export const initialState = {
+    total: 0,
+    expense: [],
+    inputError: {
+        msg: '',
+        type: ''
+    }
+}
+
 const reducer = (state, action) => {
     switch(action.type) {
-        case 'changeValue':
+        case 'error':
             return {
                 ...state,
-                [action.payload.name]: action.payload.value
+                inputError: {
+                    msg: action.payload.msg,
+                    type: action.payload.type,
+                }
             }
 
         case 'add':

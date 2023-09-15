@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useExpense } from '../context/useExpense';
+import { ERROR_TYPES } from '../reducer';
 
 const Form = () => {
   const [formValue, setFormValue] = useState({
@@ -7,10 +8,30 @@ const Form = () => {
     category: ''
   });
 
-  const {dispatch} = useExpense()
+  const { state, dispatch } = useExpense()
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // If inputs are empty
+    if (!formValue.price || !formValue.category) {
+      return dispatch({ type: 'error', 
+        payload: { 
+          msg: 'Champs obligatoire', 
+          type: ERROR_TYPES.EMPTY_INPUT 
+        }});
+    
+    
+    // If price input is not a number
+    } else if (typeof formValue.price !== 'number') {
+      return dispatch({ type: 'error',
+        payload: { 
+          msg: 'Veuillez saisir un caractère numérique', 
+          type: ERROR_TYPES.INVALID_TYPE 
+        } })
+    }
+
+
     dispatch({ type: 'add', payload: formValue })
     dispatch({ type: 'total' })
   }
@@ -30,6 +51,9 @@ const Form = () => {
               className='input'
               onChange={(e) => setFormValue( value => ({...value, price: parseInt(e.target.value) }))}
             />
+            {
+              state.inputError.type && <span>{state.inputError.msg}</span>
+            }
           </label>
 
           <label>
@@ -46,6 +70,9 @@ const Form = () => {
               <option value={'education'}>Education</option>
               <option value={'others'}>Autres</option>
             </select>
+            {
+              state.inputError.type === ERROR_TYPES.EMPTY_INPUT && <span>{state.inputError.msg}</span>
+            }
           </label>
         </div>
 
