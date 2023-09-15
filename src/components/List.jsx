@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useExpense } from '../context/useExpense'
 
 const List = () => {
-  const [total, setTotal] = useState(0)
   const {state} = useExpense()
 
   return (
@@ -22,7 +21,7 @@ const List = () => {
         </div>
         <li className='row'>
           <span>Total</span>
-          <span>{total}</span>
+          <span>{state.total}</span>
         </li>
       </ul>
     </div>

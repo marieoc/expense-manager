@@ -12,6 +12,7 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({ type: 'add', payload: formValue })
+    dispatch({ type: 'total' })
   }
 
   return (
@@ -27,7 +28,7 @@ const Form = () => {
             <input
               type={'text'}
               className='input'
-              onChange={(e) => setFormValue( value => ({...value, price: e.target.value }))}
+              onChange={(e) => setFormValue( value => ({...value, price: parseInt(e.target.value) }))}
             />
           </label>
 

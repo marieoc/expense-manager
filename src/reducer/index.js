@@ -24,7 +24,10 @@ const reducer = (state, action) => {
         case "delete":
            
         case 'total':
-          
+          return {
+            ...state,
+            total: state.expense.reduce((acc, num) => acc + num.price, 0),
+          }
         default:
             return state;
     }
