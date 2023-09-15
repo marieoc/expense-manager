@@ -19,10 +19,6 @@ const List = () => {
                 <span>{el.category}</span>
                 <span>{el.price}</span>
                 <span>
-                <button 
-                    className='btn-trash'
-                    onClick={() => console.log(state)}
-                  >hello</button>
                   <button 
                     className='btn-trash'
                     onClick={() => dispatch({type: "delete", payload: el.id})}
